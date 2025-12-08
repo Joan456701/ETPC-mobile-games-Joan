@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a2fa4eff844254c94ca48af23439ee, type: 3}
   m_Name: GSVictory
   m_EditorClassIdentifier: Assembly-CSharp::GSVictory
-  type: 0
+  type: 3

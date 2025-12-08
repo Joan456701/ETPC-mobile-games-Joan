@@ -22,10 +22,27 @@ public class GSVictory : GameState
         UIVictory pause = FindObjectOfType<UIVictory>();
         pause.gameObject.SetActive(false);
     }
-     
+
+    public void NextLevel()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "SampleScene")
+        {
+            SceneManager.LoadScene("SampleScene_Level2");
+        }
+        else if (currentScene == "SampleScene_Level2")
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
+        GameStateManager.Instance.ChangeGameState(GameState.StateType.GAMEPLAY);
+    }
+
     public void ReloadScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
         GameStateManager.Instance.ChangeGameState(GameState.StateType.GAMEPLAY);
     }
 

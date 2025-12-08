@@ -13,10 +13,9 @@ public class AmmoController : MonoBehaviour
 
     private int _ammoCount;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        instance = this;    
+        instance = this;
         _ammoCount = maxAmmoCount;
 
         float size = birdPrefab.GetComponent<CircleCollider2D>().radius * 2f + offset;
@@ -29,21 +28,25 @@ public class AmmoController : MonoBehaviour
 
             BirdController bCtr = bird.GetComponent<BirdController>();
             _birds.Add(bCtr);
-
         }
-        
+
         _birds.Reverse();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public BirdController Reload()
     {
         _ammoCount = _ammoCount - 1;
+
+        if (CheckVictory())
+        {
+            GameStateManager.Instance.ChangeGameState(GameState.StateType.WIN);
+            return null;
+        }
 
         if (_ammoCount > 0)
         {
@@ -52,9 +55,14 @@ public class AmmoController : MonoBehaviour
         else
         {
             GameStateManager.Instance.ChangeGameState(GameState.StateType.OVER);
+            return null;
         }
+    }
 
-        // We should evaluate if we won.
-        return null;
+    private bool CheckVictory()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        return enemies.Length == 0;
     }
 }
