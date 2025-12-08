@@ -29,8 +29,6 @@ public class BirdBlackController : BirdController
                 DetectAlive();
             }
 
-            DrawTrace();
-
             if (!_used && Input.GetKeyDown(KeyCode.Space))
             {
                 _used = true;

@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
 
         if(target.position.x > _camera.transform.position.x )
         {
-            //Debug.Log("La posicion horizontal del pajaro es mayor que la de la camara");
             _camera.transform.position = new Vector3(target.position.x, _camera.transform.position.y, _camera.transform.position.z);
         }
     }
