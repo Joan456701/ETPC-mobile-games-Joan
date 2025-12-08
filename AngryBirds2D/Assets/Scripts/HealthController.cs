@@ -46,7 +46,6 @@ public class HealthController : MonoBehaviour
             }
 
             UpdateHealth(damage);
-            Debug.Log(damage);
         }
     }
 
