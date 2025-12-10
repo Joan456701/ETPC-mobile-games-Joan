@@ -21,7 +21,6 @@ public class BirdBlackController : BirdController
 
     private void Update()
     {
-        Debug.Log(_hasExploded);
         if (isActive)
         {
             if (_hasExploded == true)
@@ -80,7 +79,6 @@ public class BirdBlackController : BirdController
                 rb.AddForce(direction * forceMagnitude);
             }
         }
-
         StartCoroutine(DestroyAfterExplosion());
     }
 
