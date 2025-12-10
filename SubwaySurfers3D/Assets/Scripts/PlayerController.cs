@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public float hitDistance = 0.1f;
     public LayerMask collisionLayerMask;
+    public float speedIncremental = 0.01f;
 
     // Lane change
     [HideInInspector] public int currentLane = 1;
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private float _currentGravity = 0f;
     private Vector3 targetPosition;
     private CharacterController _charCtr;
+
+    private float timeIncrement = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,7 +67,10 @@ public class PlayerController : MonoBehaviour
     {
         ComputeGravity();
 
-        Vector3 forwardMove = Vector3.forward * forwardSpeed * Time.fixedDeltaTime;
+        timeIncrement += Time.fixedDeltaTime * speedIncremental;
+        float forwardFinalSpeed = forwardSpeed + timeIncrement;
+
+        Vector3 forwardMove = Vector3.forward * forwardFinalSpeed * Time.fixedDeltaTime;
         Vector3 verticalMove = Vector3.up * _currentGravity;
         Vector3 horizontalMove = Vector3.MoveTowards(_charCtr.transform.position, targetPosition, laneSwapSpeed * Time.fixedDeltaTime);
         horizontalMove = new Vector3(horizontalMove.x - transform.position.x, 0, 0);

@@ -37,7 +37,7 @@ public class TileManager : MonoBehaviour
 
     private void AddTile()
     {
-        int tileIndex = Random.Range(0, tilePrefabs.Length - 1);
+        int tileIndex = Random.Range(0, tilePrefabs.Length);
         AddTile(tileIndex);
     }
 
