@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float hitDistance = 0.1f;
     public LayerMask collisionLayerMask;
     public float speedIncremental = 0.01f;
+
+    public float coinCount;
 
     // Lane change
     [HideInInspector] public int currentLane = 1;
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Slide());
         }
-
+        Debug.Log(coinCount);
         CheckHealth();
     }
     // Update is called once per frame
