@@ -1,16 +1,21 @@
 using NUnit.Framework.Constraints;
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
     public Transform render;
     public Animator animator;
 
+    private float forwardFinalSpeed;
     public float forwardSpeed = 10f;
     public float verticalSpeed = 20f;
     public float laneSwapSpeed = 5f;
     public float laneDistance = 4f;
+    private float distance;
+    public int aroundDistance;
 
     public float jumpHeight = 1f;
     public float gravity = -9.81f;
@@ -22,7 +27,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask collisionLayerMask;
     public float speedIncremental = 0.01f;
 
+    //Variables de las monedas
+    private Coroutine activeCorutine;
+
     public float coinCount;
+    public bool doubleCoins  = false;
+    public int timeOfPowerUp;
 
     // Lane change
     [HideInInspector] public int currentLane = 1;
@@ -64,8 +74,10 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Slide());
         }
-        Debug.Log(coinCount);
         CheckHealth();
+
+        distance += forwardFinalSpeed * Time.deltaTime;
+        aroundDistance = Convert.ToInt16(distance);
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -73,7 +85,7 @@ public class PlayerController : MonoBehaviour
         ComputeGravity();
 
         timeIncrement += Time.fixedDeltaTime * speedIncremental;
-        float forwardFinalSpeed = forwardSpeed + timeIncrement;
+        forwardFinalSpeed = forwardSpeed + timeIncrement;
 
         Vector3 forwardMove = Vector3.forward * forwardFinalSpeed * Time.fixedDeltaTime;
         Vector3 verticalMove = Vector3.up * _currentGravity;
@@ -148,5 +160,19 @@ public class PlayerController : MonoBehaviour
                 _isAlive = false;
             }
         }
+    }
+
+    public void TimeDoubleCoin()
+    {
+        if (activeCorutine != null)
+            StopCoroutine(activeCorutine);
+
+        activeCorutine = StartCoroutine(PowerUpTime());
+    }
+
+    private IEnumerator PowerUpTime()
+    {
+        yield return new WaitForSeconds(timeOfPowerUp);
+        doubleCoins = false;
     }
 }

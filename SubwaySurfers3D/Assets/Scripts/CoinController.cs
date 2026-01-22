@@ -13,19 +13,28 @@ public class CoinController : MonoBehaviour
 
     private void Update()
     {
-        if (magnetTarget != null)
+        if (magnetTarget != null) //Comprueba si magnetTarget tiene valor
         {
             transform.position = Vector3.Lerp(transform.position, magnetTarget.position, _speed);
+            //Le pasa a la posicion de la moneda un vector para que la moneda vaya hacia el player
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
         {
-            PlayerController playerController = other.GetComponent<PlayerController>();
-            if (playerController != null)
+            //Aumenta la cuenta del monedas en el player
+            PlayerController pController = other.GetComponent<PlayerController>();
+            if (pController != null)
             {
-                playerController.coinCount += 1;
+                if (pController.doubleCoins == false)
+                {
+                    pController.coinCount += 1;
+                }
+                else
+                {
+                    pController.coinCount += 2;
+                }
             }
             Destroy(this.gameObject);
         }
