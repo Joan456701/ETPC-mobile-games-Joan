@@ -1,6 +1,7 @@
 using NUnit.Framework.Constraints;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
@@ -155,7 +156,15 @@ public class PlayerController : MonoBehaviour
         {
             if(_isAlive)
             {
-                Debug.Log("Detect collision " + hit.collider, hit.collider);
+                GameStateManager.Instance.ChangeGameState(GameState.StateType.OVER);
+                _isAlive = false;
+            }
+        }
+
+        if(Physics.CheckCapsule(p1, p2, _charCtr.radius, collisionLayerMask, QueryTriggerInteraction.Ignore))
+        {
+            if (_isAlive)
+            {
                 GameStateManager.Instance.ChangeGameState(GameState.StateType.OVER);
                 _isAlive = false;
             }
