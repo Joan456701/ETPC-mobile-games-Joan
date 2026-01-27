@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a6a71b008ab114aa8b0e70978652b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoubleCoinsController
-  timeOfPowerUp: 8
 --- !u!65 &1963665330255752144
 BoxCollider:
   m_ObjectHideFlags: 0
