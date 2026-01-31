@@ -22,7 +22,7 @@ public class GSOVER : GameState
         UIOver pause = FindObjectOfType<UIOver>();
         pause.gameObject.SetActive(false);
     }
-     
+
     public void ReloadScene()
     {
         SceneManager.LoadScene("spmap_tiling");

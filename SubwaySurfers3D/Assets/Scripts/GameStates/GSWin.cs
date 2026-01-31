@@ -22,7 +22,7 @@ public class GSWin : GameState
         UIWin pause = FindObjectOfType<UIWin>();
         pause.gameObject.SetActive(false);
     }
-     
+
     public void ReloadScene()
     {
         SceneManager.LoadScene("SampleScene");

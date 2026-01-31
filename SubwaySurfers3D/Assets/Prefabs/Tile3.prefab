@@ -123,6 +123,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileController
   pivotBack: {fileID: 679551839603284003}
+  magnetPrefab: {fileID: 0}
+  doubleCoinsPrefix: {fileID: 0}
+  coinPrefab: {fileID: 0}
+  powerUpSpawnChance: 0.3
+  powerUpYPosition: 1
+  powerUpZOffset: 10
+  coinLineSpawnChance: 0.7
+  minCoinsInLine: 5
+  maxCoinsInLine: 10
+  coinYPosition: 1
+  coinZStartOffset: 5
+  coinSpacing: 2
 --- !u!1 &6770119350753083772
 GameObject:
   m_ObjectHideFlags: 0

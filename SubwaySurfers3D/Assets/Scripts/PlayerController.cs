@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController _charCtr;
 
     private float timeIncrement = 0f;
+    private Vector3 _playerHorDir;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -92,8 +93,9 @@ public class PlayerController : MonoBehaviour
         Vector3 verticalMove = Vector3.up * _currentGravity;
         Vector3 horizontalMove = Vector3.MoveTowards(_charCtr.transform.position, targetPosition, laneSwapSpeed * Time.fixedDeltaTime);
         horizontalMove = new Vector3(horizontalMove.x - transform.position.x, 0, 0);
-        
-        _charCtr.Move(forwardMove + horizontalMove + verticalMove);
+        _playerHorDir = forwardMove + horizontalMove;
+
+        _charCtr.Move(_playerHorDir + verticalMove);
     }
 
     private void MoveLane(int direction)
@@ -147,21 +149,22 @@ public class PlayerController : MonoBehaviour
     }
 
     public void CheckHealth()
-    {   
+    {
         RaycastHit hit;
-        Vector3 p1 = transform.position;
-        Vector3 p2 = p1 + Vector3.up * _charCtr.height;
+        Vector3 p1 = transform.position + _playerHorDir * _charCtr.radius;
+        Vector3 p2 = p1 + Vector3.up * _charCtr.height * 0.5f;
 
-        if(Physics.CapsuleCast(p1, p2, _charCtr.radius, transform.forward, out hit, hitDistance, collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (Physics.CapsuleCast(p1, p2, _charCtr.radius * 0.5f, _playerHorDir, out hit, hitDistance, collisionLayerMask, QueryTriggerInteraction.Ignore))
         {
-            if(_isAlive)
+            Debug.Log(hit.collider.name, hit.collider.gameObject);
+            if (_isAlive)
             {
                 GameStateManager.Instance.ChangeGameState(GameState.StateType.OVER);
                 _isAlive = false;
             }
         }
 
-        if(Physics.CheckCapsule(p1, p2, _charCtr.radius, collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (Physics.CheckCapsule(p1, p2, _charCtr.radius, collisionLayerMask, QueryTriggerInteraction.Ignore))
         {
             if (_isAlive)
             {

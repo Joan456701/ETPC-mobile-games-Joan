@@ -18,7 +18,7 @@ public class GameStateManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);  
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -45,7 +45,7 @@ public class GameStateManager : MonoBehaviour
     {
         for (int i = 0; i < gameStates.Length; i++)
         {
-            if(gameStates[i].type == type)
+            if (gameStates[i].type == type)
             {
                 return gameStates[i];
             }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "GSPause", menuName = "GameStates/GSPause", order = 1)]
-public class GSPause: GameState
+public class GSPause : GameState
 {
     public override void OnEnter()
     {
@@ -25,7 +25,7 @@ public class GSPause: GameState
         UIPause pause = FindObjectOfType<UIPause>();
         pause.gameObject.SetActive(false);
     }
-     
+
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene("spmap_mainmenu");
