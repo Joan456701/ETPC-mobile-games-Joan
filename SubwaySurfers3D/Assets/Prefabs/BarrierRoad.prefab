@@ -1090,7 +1090,6 @@ GameObject:
   - component: {fileID: 4152923084299553753}
   - component: {fileID: 6180532190766039422}
   - component: {fileID: 3593021130551497551}
-  - component: {fileID: 327067812494404207}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1327,17 +1326,9 @@ MonoBehaviour:
   m_Mesh: {fileID: 0}
   m_VersionIndex: 1996
   m_IsSelectable: 1
-  m_SelectedFaces: 02000000
-  m_SelectedEdges:
-  - a: 8
-    b: 9
-  - a: 10
-    b: 8
-  - a: 9
-    b: 11
-  - a: 11
-    b: 10
-  m_SelectedVertices: 08000000090000000a0000000b000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!114 &4152923084299553753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,28 +1408,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6998304570339240454}
-  m_Mesh: {fileID: 0}
---- !u!64 &327067812494404207
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998304570339240454}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1001 &3614051927215116700
 PrefabInstance:

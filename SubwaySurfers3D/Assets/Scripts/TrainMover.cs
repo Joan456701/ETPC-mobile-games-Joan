@@ -19,7 +19,7 @@ public class TrainMover : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            transform.DOMoveZ(-64, 9);
+            transform.DOLocalMoveZ(-64, 7);
         }
     }
 }
