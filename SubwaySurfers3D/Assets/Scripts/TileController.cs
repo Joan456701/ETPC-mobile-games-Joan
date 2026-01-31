@@ -4,22 +4,16 @@ public class TileController : MonoBehaviour
 {
     public Transform pivotBack;
 
-    [Header("Power-Up Prefabs")]
     public GameObject magnetPrefab;
     public GameObject doubleCoinsPrefix;
 
-    [Header("Coin Prefabs")]
     public GameObject coinPrefab;
 
-    [Header("Power-Up Spawn Settings")]
-    [Range(0f, 1f)]
-    public float powerUpSpawnChance = 0.3f; // Probabilidad por defecto
+    [Range(0f, 1f)] public float powerUpSpawnChance = 0.3f; // Probabilidad por defecto
     public float powerUpYPosition = 1f; // Altura a la que aparecen los power-ups
     public float powerUpZOffset = 10f; // Distancia desde el inicio del tile
 
-    [Header("Coin Spawn Settings")]
-    [Range(0f, 1f)]
-    public float coinLineSpawnChance = 0.7f; // Probabilidad de spawn de monedas
+    [Range(0f, 1f)] public float coinLineSpawnChance = 0.7f; // Probabilidad de spawn de monedas
     public int minCoinsInLine = 5; // Mínimo de monedas
     public int maxCoinsInLine = 10; // Máximo de monedas
     public float coinYPosition = 1f; // Altura de las monedas
