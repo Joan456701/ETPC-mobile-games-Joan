@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class DoubleCoinsController : MonoBehaviour
 {
+    //Referencia al Player Controller
     PlayerController pController;
-    
+
 
     private void Awake()
     {
@@ -13,13 +14,15 @@ public class DoubleCoinsController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        //Comprueba si el objeto que ha entrado en el trigger es el player para activar la logica
+        if (other.CompareTag("Player"))
         {
-            pController.doubleCoins = true;
-            pController.TimeDoubleCoin();
-            Destroy(this.gameObject);
+            pController.doubleCoins = true; //Activa el multiplicador de monedas x2
+            pController.TimeDoubleCoin(); //Inicia el temporizador del power-up
+            Destroy(this.gameObject); //Destruye el objeto del power-up
         }
     }
 
-    
+
 }
+

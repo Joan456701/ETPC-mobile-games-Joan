@@ -176,15 +176,15 @@ public class PlayerController : MonoBehaviour
 
     public void TimeDoubleCoin()
     {
-        if (activeCorutine != null)
+        if (activeCorutine != null) //Detiene la corutina en el caso de que se active una nueva
             StopCoroutine(activeCorutine);
 
-        activeCorutine = StartCoroutine(PowerUpTime());
+        activeCorutine = StartCoroutine(PowerUpTime()); //Guarda el valor de la corutina actual
     }
 
     private IEnumerator PowerUpTime()
     {
-        yield return new WaitForSeconds(timeOfPowerUp);
-        doubleCoins = false;
+        yield return new WaitForSeconds(timeOfPowerUp); //Le da un tiempo de uso al PowerUp
+        doubleCoins = false; //Desactiva el multiplicador x2
     }
 }

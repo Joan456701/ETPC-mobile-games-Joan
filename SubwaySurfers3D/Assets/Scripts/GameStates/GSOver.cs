@@ -31,7 +31,7 @@ public class GSOVER : GameState
 
     public void ReturnMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("spmap_mainmenu");
         GameStateManager.Instance.ChangeGameState(GameState.StateType.MAINMENU);
     }
 }
